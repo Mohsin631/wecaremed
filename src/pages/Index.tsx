@@ -20,12 +20,12 @@ import Why3 from "@/assets/why/3.png";
 import Service1 from "@/assets/services/1.png";
 import Service2 from "@/assets/services/2.png";
 import Service3 from "@/assets/services/3.png";
-import CTA1 from "@/assets/cta/1.png";
-import CTA2 from "@/assets/cta/2.png";
-import CTA3 from "@/assets/cta/3.png";
-import CTA4 from "@/assets/cta/4.png";
-import CTA5 from "@/assets/cta/5.png";
-import CTA6 from "@/assets/cta/6.png";
+import CTA1 from "@/assets/CTA/1.png";
+import CTA2 from "@/assets/CTA/2.png";
+import CTA3 from "@/assets/CTA/3.png";
+import CTA4 from "@/assets/CTA/4.png";
+import CTA5 from "@/assets/CTA/5.png";
+import CTA6 from "@/assets/CTA/6.png";
 
 // Logo
 import logoImg from "@/assets/logo.svg";
