@@ -108,24 +108,24 @@ const Index = () => {
                 <div className="absolute inset-x-0 bottom-3 h-28 md:h-32 lg:h-36 pointer-events-none">
                   <div className="relative h-full">
                     {/* Row 1 */}
-                    <div className="absolute bottom-2 left-[6%] rotate-[-14deg] pointer-events-auto">
-                      <SpecialtyBadge name="Home Visit" />
+                    <div className="absolute bottom-0 left-[6%] rotate-[-14deg] pointer-events-auto">
+                      <SpecialtyBadge name="Physicians" />
                     </div>
                     <div className="absolute bottom-3 left-[28%] rotate-[-6deg] pointer-events-auto">
-                      <SpecialtyBadge name="Telemedicine" />
+                      <SpecialtyBadge name="Physiotherapists" />
                     </div>
-                    <div className="absolute bottom-4 right-[20%] rotate-[8deg] pointer-events-auto">
-                      <SpecialtyBadge name="Physiotherapy" />
+                    <div className="absolute bottom-3 right-[20%] rotate-[8deg] pointer-events-auto">
+                      <SpecialtyBadge name="Speech Therapists" />
                     </div>
                     {/* Row 2 */}
-                    <div className="absolute bottom-8 left-[10%] rotate-[-10deg] pointer-events-auto">
+                    <div className="absolute bottom-11 left-[10%] rotate-[-10deg] pointer-events-auto">
                       <SpecialtyBadge name="Registered Nurse" />
                     </div>
-                    <div className="absolute bottom-9 left-[40%] rotate-[-4deg] pointer-events-auto">
-                      <SpecialtyBadge name="Practical Nurse" />
+                    <div className="absolute bottom-12 left-[37%] rotate-[-4deg] pointer-events-auto">
+                      <SpecialtyBadge name="Nutritionists" />
                     </div>
-                    <div className="absolute bottom-8 right-[8%] rotate-[10deg] pointer-events-auto">
-                      <SpecialtyBadge name="Pediatrics" />
+                    <div className="absolute bottom-11 right-[8%] rotate-[10deg] pointer-events-auto">
+                      <SpecialtyBadge name="Occupational Health Therapists" />
                     </div>
                   </div>
                 </div>
@@ -356,33 +356,90 @@ const Index = () => {
         className="font-bold leading-tight"
         style={{ fontSize: "48px", color: "#12262A" }}
       >
-        Our <span className="text-primary">Services</span>
+        Choose Your <span className="text-primary">Service</span>
       </h2>
     </div>
 
-    {/* Responsive: horizontal scroll on mobile, grid on desktop */}
-    <div className="flex gap-6 overflow-x-auto pb-4 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible">
-      <ServiceCard
-        imageSrc={Service1}
-        title="Rehabilitation & Therapy"
-        description="Physiotherapist • Occupational Therapist • Speech Therapist • Nutritionist"
-        className="min-w-[85%] sm:min-w-[70%] md:min-w-0" // wider on mobile, resets in grid
-      />
-      <ServiceCard
-        imageSrc={Service2}
-        title="Physiotherapist"
-        description="Personalized programs to restore movement, reduce pain, and improve function."
-        className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
-      />
-      <ServiceCard
-        imageSrc={Service3}
-        title="Occupational / Speech / Nutrition"
-        description="Daily-living support, speech & language therapy, and tailored nutrition plans."
-        className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
-      />
+    {/* Section A: Home Healthcare */}
+    <div className="mb-12">
+      <h3 className="text-3xl font-semibold text-primary mb-6 text-center md:text-center">
+        Home Healthcare
+      </h3>
+      <div className="flex gap-6 overflow-x-auto pb-4 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible">
+        <ServiceCard
+          imageSrc={Service1}
+          title="Physician"
+          description="Experienced doctors providing medical care at home."
+          className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
+        />
+        <ServiceCard
+          imageSrc={Service2}
+          title="Nurse"
+          description="Qualified nurses available for home care and support."
+          className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
+        />
+        <ServiceCard
+          imageSrc={Service3}
+          title="Physiotherapist"
+          description="Rehabilitation and mobility improvement programs."
+          className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
+        />
+        <ServiceCard
+          imageSrc={Service1}
+          title="Occupational Health Therapist"
+          description="Support for daily living and work-related recovery."
+          className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
+        />
+        <ServiceCard
+          imageSrc={Service2}
+          title="Speech Therapist"
+          description="Personalized speech and language therapy at home."
+          className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
+        />
+      </div>
+    </div>
+
+    {/* Section B: Telemedicine */}
+    <div>
+      <h3 className="text-3xl font-semibold text-primary mb-6 text-center md:text-center">
+        Telemedicine
+      </h3>
+      <div className="flex gap-6 overflow-x-auto pb-4 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible">
+        <ServiceCard
+          imageSrc={Service1}
+          title="Physician"
+          description="Virtual consultations with licensed doctors."
+          className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
+        />
+        <ServiceCard
+          imageSrc={Service2}
+          title="Psychologist / Mental Health Therapist"
+          description="Online counseling and therapy sessions for mental health."
+          className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
+        />
+        <ServiceCard
+          imageSrc={Service3}
+          title="Nutritionist"
+          description="Tele-consultations for diet planning and health advice."
+          className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
+        />
+        <ServiceCard
+          imageSrc={Service1}
+          title="Occupational Health Therapist"
+          description="Remote guidance for occupational health recovery."
+          className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
+        />
+        <ServiceCard
+          imageSrc={Service2}
+          title="Speech Therapist"
+          description="Virtual sessions to improve speech and communication skills."
+          className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
+        />
+      </div>
     </div>
   </div>
 </section>
+
 
 
       {/* Bottom CTA Section */}
