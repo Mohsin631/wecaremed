@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Stethoscope, UserRound, Activity, BriefcaseMedical, Mic,BrainCircuit,Apple } from "lucide-react";
 // import Header from "@/components/header";
 import { 
   MessageCircle, 
@@ -35,7 +36,7 @@ import ServiceCard from "@/components/ServiceCard";
 import FeatureCard from "@/components/FeatureCard";
 import HowItWorksCard from "@/components/HowItWorksCard";
 import SpecialtyBadge from "@/components/SpecialtyBadge";
-import doctorImage from "@/assets/doctor-hero.svg";
+import doctorImage from "@/assets/main-image.jpg";
 
 const Index = () => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
@@ -98,39 +99,41 @@ const Index = () => {
             {/* Right Content - Doctor Image with Specialties */}
             <div className="relative animate-slide-up lg:py-10">
               <div className="relative bg-gradient-hero rounded-3xl p-18 overflow-hidden">
-                <img
-                  src={doctorImage}
-                  alt="Professional healthcare doctor"
-                  className="w-full h-[700px] object-fill rounded-2xl"
-                />
-
+            <img
+                src={doctorImage}
+                alt="Professional healthcare doctor"
+                className="w-full h-[500px] md:h-[750px] object-fill rounded-2xl"
+              />
                 {/* Sticker-style Specialty Badges */}
-                <div className="absolute inset-x-0 bottom-3 h-28 md:h-32 lg:h-36 pointer-events-none">
-                  <div className="relative h-full">
-                    {/* Row 1 */}
-                    <div className="absolute bottom-0 left-[6%] rotate-[-14deg] pointer-events-auto">
-                      <SpecialtyBadge name="Physicians" />
-                    </div>
-                    <div className="absolute bottom-3 left-[28%] rotate-[-6deg] pointer-events-auto">
-                      <SpecialtyBadge name="Physiotherapists" />
-                    </div>
-                    <div className="absolute bottom-3 right-[20%] rotate-[8deg] pointer-events-auto">
-                      <SpecialtyBadge name="Speech Therapists" />
-                    </div>
-                    {/* Row 2 */}
-                    <div className="absolute bottom-11 left-[10%] rotate-[-10deg] pointer-events-auto">
-                      <SpecialtyBadge name="Registered Nurse" />
-                    </div>
-                    <div className="absolute bottom-12 left-[37%] rotate-[-4deg] pointer-events-auto">
-                      <SpecialtyBadge name="Nutritionists" />
-                    </div>
-                    <div className="absolute bottom-11 right-[8%] rotate-[10deg] pointer-events-auto">
-                      <SpecialtyBadge name="Occupational Health Therapists" />
-                    </div>
-                  </div>
-                </div>
+         <div className="absolute inset-x-0 bottom-0 h-28 md:h-32 lg:h-36 pointer-events-none hidden md:block">
+  <div className="relative h-full">
+    {/* Row 1 */}
+    <div className="absolute bottom-0 left-[6%] rotate-[-14deg] pointer-events-auto">
+      <SpecialtyBadge name="Physicians" />
+    </div>
+    <div className="absolute bottom-3 left-[28%] rotate-[-6deg] pointer-events-auto">
+      <SpecialtyBadge name="Physiotherapists" />
+    </div>
+    <div className="absolute bottom-3 right-[20%] rotate-[8deg] pointer-events-auto">
+      <SpecialtyBadge name="Speech Therapists" />
+    </div>
+    {/* Row 2 */}
+    <div className="absolute bottom-11 left-[10%] rotate-[-10deg] pointer-events-auto">
+      <SpecialtyBadge name="Registered Nurse" />
+    </div>
+    <div className="absolute bottom-12 left-[37%] rotate-[-4deg] pointer-events-auto">
+      <SpecialtyBadge name="Nutritionists" />
+    </div>
+    <div className="absolute bottom-11 right-[8%] rotate-[10deg] pointer-events-auto">
+      <SpecialtyBadge name="Occupational Health Therapists" />
+    </div>
+  </div>
+</div>
+
+
               </div>
             </div>
+            
             {/* /Right */}
           </div>
         </div>
@@ -154,7 +157,7 @@ const Index = () => {
             <div className="lg:col-span-3">
               <HowItWorksCard
                 step={1}
-                title="Choose a Category"
+                title="Choose the type of service"
                 description="Pick the type of care you need, from primary health to specialty service"
                 iconSrc={Icon1}
                 delay={0}
@@ -163,7 +166,7 @@ const Index = () => {
             <div className="lg:col-span-2">
               <HowItWorksCard
                 step={2}
-                title="Choose Service"
+                title="Choose your service"
                 description="Select the service you need, we have all the services available"
                 iconSrc={Icon2}
                 delay={200}
@@ -172,7 +175,7 @@ const Index = () => {
             <div className="lg:col-span-2">
               <HowItWorksCard
                 step={3}
-                title="Choose Staff"
+                title="Choose your healthcare provider"
                 description="Pick the professional and get appointment details and choose our specialist"
                 iconSrc={Icon3}
                 delay={400}
@@ -181,7 +184,7 @@ const Index = () => {
             <div className="lg:col-span-3">
               <HowItWorksCard
                 step={4}
-                title="Fill the short form"
+                title="Submit your request"
                 description="Enter your details and appointment time and confirm on whatsapp"
                 iconSrc={Icon4}
                 delay={600}
@@ -366,36 +369,36 @@ const Index = () => {
         Home Healthcare
       </h3>
       <div className="flex gap-6 overflow-x-auto pb-4 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible">
-        <ServiceCard
-          imageSrc={Service1}
-          title="Physician"
-          description="Experienced doctors providing medical care at home."
-          className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
-        />
-        <ServiceCard
-          imageSrc={Service2}
-          title="Nurse"
-          description="Qualified nurses available for home care and support."
-          className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
-        />
-        <ServiceCard
-          imageSrc={Service3}
-          title="Physiotherapist"
-          description="Rehabilitation and mobility improvement programs."
-          className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
-        />
-        <ServiceCard
-          imageSrc={Service1}
-          title="Occupational Health Therapist"
-          description="Support for daily living and work-related recovery."
-          className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
-        />
-        <ServiceCard
-          imageSrc={Service2}
-          title="Speech Therapist"
-          description="Personalized speech and language therapy at home."
-          className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
-        />
+  <ServiceCard
+  icon={Stethoscope}
+  title="Physician"
+  description="Experienced doctors providing medical care at home."
+  className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
+/>
+<ServiceCard
+  icon={UserRound}
+  title="Nurse"
+  description="Qualified nurses available for home care and support."
+  className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
+/>
+<ServiceCard
+  icon={Activity}
+  title="Physiotherapist"
+  description="Rehabilitation and mobility improvement programs."
+  className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
+/>
+<ServiceCard
+  icon={BriefcaseMedical}
+  title="Occupational Health Therapist"
+  description="Support for daily living and work-related recovery."
+  className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
+/>
+<ServiceCard
+  icon={Mic}
+  title="Speech Therapist"
+  description="Personalized speech and language therapy at home."
+  className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
+/>
       </div>
     </div>
 
@@ -406,35 +409,39 @@ const Index = () => {
       </h3>
       <div className="flex gap-6 overflow-x-auto pb-4 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible">
         <ServiceCard
-          imageSrc={Service1}
-          title="Physician"
-          description="Virtual consultations with licensed doctors."
-          className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
-        />
-        <ServiceCard
-          imageSrc={Service2}
-          title="Psychologist / Mental Health Therapist"
-          description="Online counseling and therapy sessions for mental health."
-          className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
-        />
-        <ServiceCard
-          imageSrc={Service3}
-          title="Nutritionist"
-          description="Tele-consultations for diet planning and health advice."
-          className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
-        />
-        <ServiceCard
-          imageSrc={Service1}
-          title="Occupational Health Therapist"
-          description="Remote guidance for occupational health recovery."
-          className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
-        />
-        <ServiceCard
-          imageSrc={Service2}
-          title="Speech Therapist"
-          description="Virtual sessions to improve speech and communication skills."
-          className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
-        />
+  icon={Stethoscope}
+  title="Physician"
+  description="Virtual consultations with licensed doctors."
+  className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
+/>
+
+<ServiceCard
+  icon={BrainCircuit}
+  title="Psychologist / Mental Health Therapist"
+  description="Online counseling and therapy sessions for mental health."
+  className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
+/>
+
+<ServiceCard
+  icon={Apple}
+  title="Nutritionist"
+  description="Tele-consultations for diet planning and health advice."
+  className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
+/>
+
+<ServiceCard
+  icon={BriefcaseMedical}
+  title="Occupational Health Therapist"
+  description="Remote guidance for occupational health recovery."
+  className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
+/>
+
+<ServiceCard
+  icon={Mic}
+  title="Speech Therapist"
+  description="Virtual sessions to improve speech and communication skills."
+  className="min-w-[85%] sm:min-w-[70%] md:min-w-0"
+/>
       </div>
     </div>
   </div>
@@ -597,7 +604,7 @@ const Index = () => {
 
                 <div className="flex items-center space-x-2">
                   <MapPin className="w-4 h-4" style={{ color: "#131313" }} />
-                  <span>Lebanon</span>
+                  <span>Beirut, Lebanon</span>
                 </div>
               </div>
             </div>
