@@ -97,42 +97,26 @@ const Index = () => {
       </div>
 
             {/* Right Content - Doctor Image with Specialties */}
-            <div className="relative animate-slide-up lg:py-10">
-              <div className="relative bg-gradient-hero rounded-3xl p-18 overflow-hidden">
-            <img
-                src={doctorImage}
-                alt="Professional healthcare doctor"
-                className="w-full h-[500px] md:h-[750px] object-fill rounded-2xl"
-              />
-                {/* Sticker-style Specialty Badges */}
-         <div className="absolute inset-x-0 bottom-0 h-28 md:h-32 lg:h-36 pointer-events-none hidden md:block">
-  <div className="relative h-full">
-    {/* Row 1 */}
-    <div className="absolute bottom-0 left-[6%] rotate-[-14deg] pointer-events-auto">
-      <SpecialtyBadge name="Physicians" />
-    </div>
-    <div className="absolute bottom-3 left-[28%] rotate-[-6deg] pointer-events-auto">
-      <SpecialtyBadge name="Physiotherapists" />
-    </div>
-    <div className="absolute bottom-3 right-[20%] rotate-[8deg] pointer-events-auto">
-      <SpecialtyBadge name="Speech Therapists" />
-    </div>
-    {/* Row 2 */}
-    <div className="absolute bottom-11 left-[10%] rotate-[-10deg] pointer-events-auto">
-      <SpecialtyBadge name="Registered Nurse" />
-    </div>
-    <div className="absolute bottom-12 left-[37%] rotate-[-4deg] pointer-events-auto">
-      <SpecialtyBadge name="Nutritionists" />
-    </div>
-    <div className="absolute bottom-11 right-[8%] rotate-[10deg] pointer-events-auto">
-      <SpecialtyBadge name="Occupational Health Therapists" />
+<div className="relative animate-slide-up pt-12 md:pt-0 lg:py-10">
+  <div className="relative">
+    {/* Layer 1 (outer frame) */}
+    <div className="hidden md:block absolute -inset-8 rounded-3xl bg-[#6EE3E7]"></div>
+
+    {/* Layer 2 (middle frame) */}
+    <div className="absolute -inset-4 rounded-3xl bg-[#C6F4FA]"></div>
+
+    {/* Main Image Card */}
+    <div className="relative bg-white rounded-3xl overflow-hidden shadow-lg">
+      <img
+        src={doctorImage}
+        alt="Professional healthcare doctor"
+        className="w-full h-[500px] md:h-[750px] object-fill rounded-2xl"
+      />
     </div>
   </div>
 </div>
 
 
-              </div>
-            </div>
             
             {/* /Right */}
           </div>
