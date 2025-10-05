@@ -40,6 +40,8 @@ import doctorImage from "@/assets/main-image.jpg";
 
 const Index = () => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
+
 
   // 👇 Ref to Services section
   const servicesRef = useRef<HTMLDivElement | null>(null);
@@ -93,6 +95,13 @@ const Index = () => {
           >
             Explore Services
           </Button>
+            <Button
+                        variant="outline"
+                                          onClick={() => setIsContactOpen(true)}
+    className="w-full sm:w-auto px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300"
+  >
+    Contact Us
+  </Button>
         </div>
       </div>
 
@@ -554,7 +563,7 @@ const Index = () => {
               <ul className="space-y-2" style={{ color: "#131313" }}>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#services" onClick={(e) => { e.preventDefault(); handleExploreClick(); }}>Services</a></li>
-                {/* <li><a href="#contact">Contact Us</a></li> */}
+                <li><a onClick={(e) => { e.preventDefault(); setIsContactOpen(true); }}>Contact Us</a></li>
               </ul>
             </div>
             
@@ -606,6 +615,77 @@ const Index = () => {
         isOpen={isBookingOpen} 
         onClose={() => setIsBookingOpen(false)} 
       />
+      {/* Contact Modal */}
+{isContactOpen && (
+  <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-[1000]">
+    <div className="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 relative">
+      <button
+        onClick={() => setIsContactOpen(false)}
+        className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+      >
+        ✕
+      </button>
+
+      <h3 className="text-2xl font-bold mb-4 text-center" style={{ color: "#12262A" }}>
+        Contact Us
+      </h3>
+
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          // handle contact form submit here (e.g., API call, email)
+          alert("Your message has been submitted!");
+          setIsContactOpen(false);
+        }}
+        className="space-y-4"
+      >
+        <div>
+          <label className="block text-sm font-medium mb-1" htmlFor="name">
+            Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            required
+            className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium mb-1" htmlFor="email">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            required
+            className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium mb-1" htmlFor="message">
+            Message
+          </label>
+          <textarea
+            id="message"
+            rows={4}
+            required
+            className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+          ></textarea>
+        </div>
+
+        <Button
+          type="submit"
+          className="w-full py-3 text-lg font-semibold bg-primary hover:bg-primary/90 text-white rounded-md transition-all"
+        >
+          Send Message
+        </Button>
+      </form>
+    </div>
+  </div>
+)}
+
     </div>
   );
 };
