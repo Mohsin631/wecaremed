@@ -29,7 +29,7 @@ import CTA5 from "@/assets/CTA/5.png";
 import CTA6 from "@/assets/CTA/6.png";
 
 // Logo
-import logoImg from "@/assets/logo.svg";
+import logoImg from "@/assets/logo.jpeg";
 
 import BookingModal from "@/components/BookingModal";
 import ServiceCard from "@/components/ServiceCard";

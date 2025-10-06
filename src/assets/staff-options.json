@@ -24,7 +24,7 @@
     "Aya Noukari"
   ],
 
-  "Speech Therapist (Home Healthcare)": ["Speech HH A", "Speech HH B"],
+  "Speech Therapist (Home Healthcare)": ["On Request!"],
 
   "Physician (Telemedicine)": ["Dr. Tele Physician A", "Dr. Tele Physician B"],
 
@@ -85,9 +85,9 @@
     "Nare G. Boursalian"
   ],
 
-  "Occupational Health Therapist (Telemedicine)": ["Occ. Therapist Tele A", "Occ. Therapist Tele B"],
+  "Occupational Health Therapist (Telemedicine)": ["On Request!"],
 
-  "Speech Therapist (Telemedicine)": ["Speech Tele A", "Speech Tele B"],
+  "Speech Therapist (Telemedicine)": ["On Request!"],
 
   "Basic Nursing Care (RN)": [
     "Iman Nahle",
@@ -408,6 +408,14 @@
     "Ali Abdullah Aboud",
     "Eman Mohammed Stayteh"
   ],
+
+  "Physician - Home Healthcare": [
+    "On Request!"
+  ],
+  "Physician - Telemedicine": [
+    "On Request!"
+  ],
+
   "Blood Extraction (PN)": [
     "Zeinab Naji Saker",
     "اسراء احمد جعفر",

@@ -26,7 +26,6 @@ import {
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-// Import staff options from JSON
 import STAFF_OPTIONS from "@/assets/staff-options.json";
 
 // —— Config ——
@@ -80,12 +79,48 @@ const NURSE_SERVICES: Record<NurseType, string[]> = {
   ],
 };
 
+// New: Physician specialties
+const MEDICAL_SPECIALTIES = [
+  "Family Medicine",
+  "Internal Medicine",
+  "Pediatrics",
+  "Neonatology",
+  "General Practice(GP)",
+  "General Surgery",
+  "Cardiothoracic Surgery",
+  "Colon and Rectal Surgery",
+  "Breast Surgery",
+  "Neurological Surgery (Neurosurgery)",
+  "Ophthalmology",
+  "Oral and Maxillofacial Surgery",
+  "Orthopedic Surgery",
+  "Otolaryngology (ENT - Ear, Nose, and Throat)",
+  "Urology",
+  "Vascular Surgery",
+  "Allergy and Immunology",
+  "Cardiology",
+  "Critical Care Medicine (Intensive Care Medicine)",
+  "Dermatology",
+  "Endocrinology, Diabetes, and Metabolism",
+  "Gastroenterology",
+  "Geriatric Medicine (Geriatrics)",
+  "Hematology",
+  "Infectious Disease",
+  "Nephrology",
+  "Neurology",
+  "Oncology (Medical Oncology)",
+  "Psychiatry",
+  "Pulmonology (Respiratory Medicine)",
+  "Rheumatology",
+  "Adolescent Medicine",
+];
+
 interface BookingModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-type StepId = 1 | 2 | 3 | 4 | 5;
+type StepId = 1 | 2 | 3 | 4 | 5 | 6;
 
 const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
   const [currentStep, setCurrentStep] = useState<StepId>(1);
@@ -96,6 +131,7 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
     service: "",
     nurseType: "" as "" | NurseType,
     nurseService: "",
+    specialty: "",
     staff: "",
     name: "",
     phone: "",
@@ -112,6 +148,7 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
       service: "",
       nurseType: "",
       nurseService: "",
+      specialty: "",
       staff: "",
       name: "",
       phone: "",
@@ -128,6 +165,9 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
       ``,
       `Type: ${formData.type || "-"}`,
       `Service: ${formData.service || "-"}`,
+      ...(formData.service === "Physician" && formData.specialty
+        ? [`Specialty: ${formData.specialty}`]
+        : []),
       ...(formData.service === "Nurse" && formData.nurseType
         ? [`Nurse Type: ${formData.nurseType}`]
         : []),
@@ -147,7 +187,7 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
     const url = `https://wa.me/${WHATSAPP_TEL}?text=${encodeURIComponent(whatsAppMessage)}`;
     window.open(url, "_blank", "noopener,noreferrer");
     setHandoffShown(true);
-    setCurrentStep(5);
+    setCurrentStep(6);
   };
 
   const copyMessage = async () => {
@@ -170,7 +210,7 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
         <Select
           value={formData.type}
           onValueChange={(value) =>
-            setFormData({ ...formData, type: value, service: "", nurseType: "", nurseService: "" })
+            setFormData({ ...formData, type: value, service: "", nurseType: "", nurseService: "", specialty: "" })
           }
         >
           <SelectTrigger className="h-12">
@@ -194,7 +234,7 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
         <Select
           value={formData.service}
           onValueChange={(value) =>
-            setFormData({ ...formData, service: value, nurseType: "", nurseService: "" })
+            setFormData({ ...formData, service: value, nurseType: "", nurseService: "", specialty: "" })
           }
           disabled={!formData.type}
         >
@@ -212,6 +252,31 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
     },
     {
       id: 3 as StepId,
+      title: "Choose Medical Specialty",
+      subtitle: "For physician services only",
+      icon: <UserCheck className="w-6 h-6" />,
+      content: (
+        <Select
+          value={formData.specialty}
+          onValueChange={(value) => setFormData({ ...formData, specialty: value })}
+        >
+          <SelectTrigger className="h-12">
+            <SelectValue placeholder="Select medical specialty" />
+          </SelectTrigger>
+          <SelectContent>
+            {MEDICAL_SPECIALTIES.map((s) => (
+              <SelectItem key={s} value={s}>
+                {s}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      ),
+      isValid: () =>
+        formData.service === "Physician" ? !!formData.specialty : true,
+    },
+    {
+      id: 4 as StepId,
       title: "Choose Nurse Type & Service",
       subtitle: "Only for Nurse category",
       icon: <UserCheck className="w-6 h-6" />,
@@ -254,7 +319,7 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
           : true,
     },
     {
-      id: 4 as StepId,
+      id: 5 as StepId,
       title: "Choose Staff",
       subtitle: "Pick your preferred provider",
       icon: <Clock className="w-6 h-6" />,
@@ -281,12 +346,16 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
               else key = "Blood Extraction (PN)";
             }
           }
-        } else {
+        } else if (formData.service === "Physician") {
+  key =
+    formData.type === "Telemedicine"
+      ? "Physician - Telemedicine"
+      : "Physician - Home Healthcare";
+} else {
           if (formData.type === "Home Healthcare") {
             key = `${formData.service} (Home Healthcare)`;
           } else if (formData.type === "Telemedicine") {
-            if (formData.service === "Physician") key = "Physician (Telemedicine)";
-            else if (formData.service === "Occupational Health Therapist") key = "Occupational Health Therapist (Telemedicine)";
+            if (formData.service === "Occupational Health Therapist") key = "Occupational Health Therapist (Telemedicine)";
             else if (formData.service === "Speech Therapist") key = "Speech Therapist (Telemedicine)";
             else key = formData.service!;
           }
@@ -317,7 +386,7 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
       isValid: () => !!formData.staff,
     },
     {
-      id: 5 as StepId,
+      id: 6 as StepId,
       title: "Fill the short form",
       subtitle: "Enter details & appointment date",
       icon: <FileText className="w-6 h-6" />,
@@ -389,12 +458,27 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
       return;
     }
 
-    if (formData.service !== "Nurse" && currentStep === 2) {
+    if (formData.service === "Physician" && currentStep === 2) {
+      setCurrentStep(3);
+      return;
+    }
+
+    if (formData.service === "Physician" && currentStep === 3) {
+      setCurrentStep(5);
+      return;
+    }
+
+    if (formData.service !== "Nurse" && formData.service !== "Physician" && currentStep === 2) {
+      setCurrentStep(5);
+      return;
+    }
+
+    if (formData.service === "Nurse" && currentStep === 2) {
       setCurrentStep(4);
       return;
     }
 
-    if (currentStep < 5) {
+    if (currentStep < 6) {
       setCurrentStep((s) => (s + 1) as StepId);
     } else {
       openWhatsApp();
@@ -402,11 +486,22 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
   };
 
   const handleBack = () => {
+    if (currentStep === 5 && formData.service === "Physician") {
+      setCurrentStep(3);
+      return;
+    }
+
+    if (currentStep === 5 && formData.service !== "Nurse" && formData.service !== "Physician") {
+      setCurrentStep(2);
+      return;
+    }
+
+    if (currentStep === 4 && formData.service === "Nurse") {
+      setCurrentStep(2);
+      return;
+    }
+
     if (currentStep > 1) {
-      if (formData.service !== "Nurse" && currentStep === 4) {
-        setCurrentStep(2);
-        return;
-      }
       setCurrentStep((s) => (s - 1) as StepId);
     }
   };
@@ -449,7 +544,7 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
               <span>Back</span>
             </Button>
 
-            {currentStep === 5 ? (
+            {currentStep === 6 ? (
               <Button onClick={openWhatsApp} className="bg-primary hover:bg-primary/90">
                 Send via WhatsApp
               </Button>
