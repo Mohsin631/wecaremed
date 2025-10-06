@@ -71,8 +71,8 @@ const Index = () => {
         {/* Main Heading */}
         <div className="space-y-3 sm:space-y-4">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight">
-            Your Personal<br />
-            <span className="text-primary">Health Universe</span>
+            Because Your<br />
+            <span className="text-primary">Health Matters</span>
           </h1>
           <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
             We merge cutting-edge tech with world-class medical expertise to
